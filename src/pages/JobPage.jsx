@@ -1,26 +1,27 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate , useLoaderData } from "react-router-dom";
 import { FaArrowLeft, FaMapMarker } from "react-icons/fa";
 
+
 const JobPage = () => {
-  const [job, setJob] = useState({});
-  const { id } = useParams();
+  // for data loader 
+  let job = useLoaderData();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(`/api/jobs/${id}`);
-        if (!res.ok) throw new Error("Failed to fetch job data");
-        const data = await res.json();
-        setJob(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, [id]);
-
+  // for data fetch usinng useEffect
+  // const [job, setJob] = useState({});
+  // const { id } = useParams();
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await fetch(`/api/jobs/${id}`);
+  //       if (!res.ok) throw new Error("Failed to fetch job data");
+  //       const data = await res.json();
+  //       setJob(data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [id]);
   const handleDelete = async () => {
     try {
       const res = await fetch(`/api/jobs/${id}`, {
@@ -106,5 +107,10 @@ const JobPage = () => {
   );
 };
 
-export default JobPage;
+const jobLoader = async ({ params }) => {
+    let res = fetch(`/api/jobs/${params.id}`);
+    let data = await res.json();
+    return data;
+}
+export {JobPage as default, jobLoader};
 
