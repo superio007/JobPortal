@@ -1,27 +1,28 @@
 import { Link, useParams, useNavigate , useLoaderData } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { FaArrowLeft, FaMapMarker } from "react-icons/fa";
 
 
 const JobPage = () => {
   // for data loader 
-  let job = useLoaderData();
+  // let job = useLoaderData();
   const navigate = useNavigate();
   // for data fetch usinng useEffect
-  // const [job, setJob] = useState({});
-  // const { id } = useParams();
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await fetch(`/api/jobs/${id}`);
-  //       if (!res.ok) throw new Error("Failed to fetch job data");
-  //       const data = await res.json();
-  //       setJob(data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, [id]);
+  const [job, setJob] = useState({});
+  const { id } = useParams();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`/api/jobs/${id}`);
+        if (!res.ok) throw new Error("Failed to fetch job data");
+        const data = await res.json();
+        setJob(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, [id]);
   const handleDelete = async () => {
     try {
       const res = await fetch(`/api/jobs/${id}`, {
@@ -87,7 +88,7 @@ const JobPage = () => {
               <div className="bg-white p-6 rounded-lg shadow-md mt-6">
                 <h3 className="text-xl font-bold mb-6">Manage Job</h3>
                 <Link
-                  to={`/add-job/${id}`}
+                  to={`/edit-job/${id}`}
                   className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                 >
                   Edit Job
@@ -107,10 +108,10 @@ const JobPage = () => {
   );
 };
 
-const jobLoader = async ({ params }) => {
-    let res = fetch(`/api/jobs/${params.id}`);
-    let data = await res.json();
-    return data;
-}
-export {JobPage as default, jobLoader};
+// const jobLoader = async ({ params }) => {
+//     let res = fetch(`/api/jobs/${params.id}`);
+//     let data = await res.json();
+//     return data;
+// }
+export {JobPage as default};
 
