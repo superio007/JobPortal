@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  const backendUrl = 'http://localhost:3001' + req.url.replace('/api', '');
+  const backendUrl = 'http://localhost:3001/jobs' + req.url.replace('/api', '');
 
   try {
     const response = await fetch(backendUrl, {
