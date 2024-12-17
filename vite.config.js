@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
+        target: 'https://json-deploy-job-portal-7nd3fwju6-superio007s-projects.vercel.app/db.json',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
