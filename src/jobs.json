@@ -83,6 +83,20 @@
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
       }
+    },
+    {
+      "id": "5c98",
+      "title": "Web Admin",
+      "type": "Remote",
+      "location": "Thane",
+      "description": "🚀 Follow Danish Shabbir 💫 for unique insights in Programming, Web Development, Tips & Tricks, and Job Opportunities. Stay ahead with actionable content!",
+      "salary": "$60K - 70K",
+      "company": {
+        "name": "I Fly Now",
+        "description": "🚀 Follow Danish Shabbir 💫 for unique insights in Programming, Web Development, Tips & Tricks, and Job Opportunities. Stay ahead with actionable content!",
+        "contactEmail": "dhokekiran98@gmail.com",
+        "contactPhone": "08097972852"
+      }
     }
   ]
 }
