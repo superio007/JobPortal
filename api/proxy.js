@@ -1,15 +1,18 @@
-// api/proxy.js
-
-import { createProxyMiddleware } from 'http-proxy-middleware';
-
 export default async function handler(req, res) {
-  const { createProxyMiddleware } = await import('http-proxy-middleware');
+  const backendUrl = 'http://localhost:3001' + req.url.replace('/api', '');
 
-  const proxy = createProxyMiddleware({
-    target: 'http://localhost:3001', // Your target server
-    changeOrigin: true,
-    pathRewrite: { '^/api': '' }, // Remove `/api` prefix
-  });
+  try {
+    const response = await fetch(backendUrl, {
+      method: req.method,
+      headers: {
+        'Content-Type': req.headers['content-type'] || 'application/json'
+      },
+      body: req.method === 'POST' ? JSON.stringify(req.body) : null,
+    });
 
-  return proxy(req, res);
+    const data = await response.json();
+    res.status(response.status).json(data);
+  } catch (error) {
+    res.status(500).json({ error: 'Error fetching from backend' });
+  }
 }
