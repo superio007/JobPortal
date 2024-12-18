@@ -8,8 +8,7 @@ const TryComponent = () => {
     async function fetchData() {
       try {
         const res = await fetch(
-          "https://json-deploy-job-portal.vercel.app/db.json",
-          //https://json-deploy-job-portal-f2fvmy9u1-superio007s-projects.vercel.app/db.json
+          "https://my-json-server.typicode.com/superio007/jsonDeploy_JobPortal/jobs/1",
           {
             method: "GET",
             mode: "cors", // Enables CORS
