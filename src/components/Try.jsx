@@ -8,7 +8,8 @@ const TryComponent = () => {
     async function fetchData() {
       try {
         const res = await fetch(
-          "https://json-deploy-job-portal-7nd3fwju6-superio007s-projects.vercel.app/db.json",
+          "https://json-deploy-job-portal.vercel.app/db.json",
+          //https://json-deploy-job-portal-f2fvmy9u1-superio007s-projects.vercel.app/db.json
           {
             method: "GET",
             mode: "cors", // Enables CORS
