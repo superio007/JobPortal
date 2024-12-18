@@ -8,7 +8,7 @@ const TryComponent = () => {
     async function fetchData() {
       try {
         const res = await fetch(
-          "https://my-json-server.typicode.com/superio007/jsonDeploy_JobPortal/jobs/1",
+          "https://jsondeploy-jobportal.onrender.com/jobs/1",
           {
             method: "GET",
             mode: "cors", // Enables CORS

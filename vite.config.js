@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://my-json-server.typicode.com/superio007/jsonDeploy_JobPortal',
+        target: 'https://jsondeploy-jobportal.onrender.com/',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
